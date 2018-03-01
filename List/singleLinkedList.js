@@ -38,6 +38,27 @@ class singleLinkedList {
     this.totalData += 1;
   }
 
+  addAll(collection){
+    /* Handler
+    1.parameter is not a Linked List
+    2.Linked List is empty
+    */
+    try{
+      if(collection.head.isEmpty){
+        //this condition is just for triggering the "not a Linked List" exception
+      }else if(this.head == null){
+        this.head = collection.head;
+        this.tail = collection.tail;
+      }else{
+        this.tail.next = collection.head;
+        this.tail = collection.tail;  
+      }
+      this.totalData += collection.totalData; 
+    }catch(e){
+      console.log("parameter should be a Linked List");
+    } 
+  }
+
   insertAfter(value, index) {
     /*  Handler
     1. If Linked List still empty
@@ -281,14 +302,11 @@ class singleLinkedList {
     */
     if(index < 0 || !Number.isInteger(index) ){
       console.log("Index parameter must be a positive whole number");
-    }
-    else if(index >= this.totalData + 1){
+    }else if(index >= this.totalData + 1){
       console.log("Index should be at least less than total data + 1")
-    }
-    else if(index === 0){
+    }else if(index === 0){
       this.addFirst(value);
-    }
-    else{
+    }else{
       const node = new Node(value);
       let curr = this.head;
       let counter = 1;
@@ -300,8 +318,6 @@ class singleLinkedList {
       curr.next = node;
       this.totalData += 1;  
     }
-    
-
   }
 
   reverse() {
@@ -328,8 +344,6 @@ class singleLinkedList {
   size(){
     return this.totalData;
   }
-
-
 }
 
 let temp = new singleLinkedList();
