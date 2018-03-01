@@ -291,6 +291,10 @@ class singleLinkedList {
     }
     return temp;
   }
+  
+  size(){
+    return this.totalData;
+  }
 
 }
 
