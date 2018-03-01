@@ -19,3 +19,4 @@ get(index) | return the value of node located at the list's specified index
 removeIndex(index) | remove a node located at the list's specified index
 reverse() | reverse the order of list data
 getReverse() | return a reverse list
+size() | return the size of linked list 

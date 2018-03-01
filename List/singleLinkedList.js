@@ -271,6 +271,39 @@ class singleLinkedList {
     }
   }
 
+  insertIndex(value, index){
+    /* Handler
+    1. index < 0
+    2. index > total data + 1
+    3. index is not a number
+    4. index is not a whole number
+    5. index = 0;
+    */
+    if(index < 0 || !Number.isInteger(index) ){
+      console.log("Index parameter must be a positive whole number");
+    }
+    else if(index >= this.totalData + 1){
+      console.log("Index should be at least less than total data + 1")
+    }
+    else if(index === 0){
+      this.addFirst(value);
+    }
+    else{
+      const node = new Node(value);
+      let curr = this.head;
+      let counter = 1;
+      while(counter < index){
+        counter+=1;
+        curr = curr.next;
+      }
+      node.next = curr.next;
+      curr.next = node;
+      this.totalData += 1;  
+    }
+    
+
+  }
+
   reverse() {
     let temp = new singleLinkedList();
     let curr = this.head;
@@ -291,10 +324,11 @@ class singleLinkedList {
     }
     return temp;
   }
-  
+
   size(){
     return this.totalData;
   }
+
 
 }
 
