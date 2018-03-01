@@ -292,7 +292,7 @@ class singleLinkedList {
     }
   }
 
-  insertIndex(value, index){
+  insertAt(value, index){
     /* Handler
     1. index < 0
     2. index > total data + 1
@@ -344,7 +344,7 @@ class singleLinkedList {
   size(){
     return this.totalData;
   }
-  
+
 }
 
 let temp = new singleLinkedList();
