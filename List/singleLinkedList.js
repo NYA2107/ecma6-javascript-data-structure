@@ -344,6 +344,7 @@ class singleLinkedList {
   size(){
     return this.totalData;
   }
+  
 }
 
 let temp = new singleLinkedList();
