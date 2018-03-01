@@ -110,6 +110,7 @@ class singleLinkedList {
         console.log("Cant Delete, Empty Linked List");
       } else {
         this.head = this.head.next;
+        this.totalData -= 1;
       }
     } else {
       let prev = this.head;
@@ -117,6 +118,7 @@ class singleLinkedList {
       while (curr) {
         if (curr.data === value) {
           prev.next = curr.next;
+          this.totalData -= 1;
           return;
         }
         prev = prev.next;
@@ -160,8 +162,10 @@ class singleLinkedList {
       console.log("Empty Linked List !");
     } else if (this.head === this.tail) {
       this.head = null;
+      this.totalData -= 1;
     } else {
       this.head = this.head.next;
+      this.totalData -= 1;
     }
   }
 
@@ -183,12 +187,12 @@ class singleLinkedList {
       this.head = null;
     } else {
       let curr = this.head;
-      while (curr.next != this.tail) {
+      for(var i = 1 ; i < this.totalData-1;i++){
         curr = curr.next;
       }
-      let temp = this.tail;
       this.tail = curr;
-      temp = null;
+      curr.next = null;
+      this.totalData -= 1;
     }
   }
 
@@ -205,6 +209,7 @@ class singleLinkedList {
 
   clear() {
     this.head = null;
+    this.totalData = 0;
   }
 
   get(index) {
@@ -218,7 +223,7 @@ class singleLinkedList {
     */
     if (index < 0 || !Number.isInteger(index)) {
       console.log("Index parameter must be a positive whole number");
-    } else if (index > this.totalData) {
+    } else if (index >= this.totalData) {
       console.log("Index parameter greater than a total data");
     } else if (index === 0) {
       return this.getFirst();
@@ -226,7 +231,9 @@ class singleLinkedList {
       return this.getLast();
     } else {
       let curr = this.head;
-      for (var i = 1; i < index; i++) {
+      let counter = 0;
+      while(counter < index){
+        counter+=1;
         curr = curr.next;
       }
       return curr.data;
@@ -244,7 +251,7 @@ class singleLinkedList {
     */
     if (index < 0 || !Number.isInteger(index)) {
       console.log("Index parameter must be a positive whole number");
-    } else if (index > this.totalData) {
+    } else if (index >= this.totalData) {
       console.log("Index parameter greater than a total data");
     } else if (index === 0) {
       this.removeFirst();
@@ -253,13 +260,14 @@ class singleLinkedList {
     } else {
       let prev = this.head;
       let curr = this.head.next;
-      for (var i = 1; i < index) {
+      for (var i = 1; i < index; i++) {
         prev = prev.next;
         curr = curr.next;
       }
       let temp = curr;
       prev.next = curr.next;
       temp = null;
+      this.totalData -= 1;
     }
   }
 
@@ -285,3 +293,11 @@ class singleLinkedList {
   }
 
 }
+
+let temp = new singleLinkedList();
+temp.addFirst(1);
+temp.addFirst(2);
+temp.addFirst(3);
+temp.addFirst(4);
+temp.addFirst(5);
+temp.addFirst(6);
