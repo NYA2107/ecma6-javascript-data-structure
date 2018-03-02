@@ -36,3 +36,15 @@ getFront() | Return data from the first node in the queue
 getBack() | Return data from the last node in the queue
 clear() | Clear this queue
 print() | Print data from the front node until the back node
+
+
+## Stack ##
+Function | Description
+---------|-------------
+push(value) | Adding value to the stack
+pop() | Remove the top node
+isEmpty() | Return true if stack is empty, vice versa
+getSize() | Return total data in stack
+getTop() |  Return data from the top node
+clear() |  Clearing this stack
+print() | Print data start from the top node until the last node in stack
