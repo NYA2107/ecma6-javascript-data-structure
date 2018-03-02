@@ -51,12 +51,12 @@ class singleLinkedList {
         this.tail = collection.tail;
       }else{
         this.tail.next = collection.head;
-        this.tail = collection.tail;  
+        this.tail = collection.tail;
       }
-      this.totalData += collection.totalData; 
+      this.totalData += collection.totalData;
     }catch(e){
       console.log("parameter should be a Linked List");
-    } 
+    }
   }
 
   insertAfter(value, index) {
@@ -125,13 +125,15 @@ class singleLinkedList {
     /* Handler
     1. If Linked List still empty
     2. If value found in the head of linked list
+    3. If value found in the tail of linked list
     */
-    if (!this.head || this.head.data === value) {
+    if (!this.head || this.head.data === value || this.tail.data === value ) {
       if (!this.head) {
         console.log("Cant Delete, Empty Linked List");
-      } else {
-        this.head = this.head.next;
-        this.totalData -= 1;
+      } else if(this.head.data === value) {
+        this.removeFirst();
+      } else if(this.tail.data === value){
+        this.removeLast();
       }
     } else {
       let prev = this.head;
@@ -202,6 +204,10 @@ class singleLinkedList {
   }
 
   removeLast() {
+    /* Handler
+    1. If Linked List still empty
+    2. If there is 1 data in linked list
+    */
     if (!this.head) {
       console.log("Empty Linked List");
     } else if (this.head === this.tail) {
@@ -236,19 +242,19 @@ class singleLinkedList {
   get(index) {
     /* Hanlder
     1. index < 0;
-    2. index > total data
+    2. index >= total data
     3. index is not a number
     4. index is not a whole number
     5. index = 0
-    6. index = total data
+    6. index = total data-1
     */
     if (index < 0 || !Number.isInteger(index)) {
       console.log("Index parameter must be a positive whole number");
     } else if (index >= this.totalData) {
-      console.log("Index parameter greater than a total data");
+      console.log("Index parameter should be at least less than total data");
     } else if (index === 0) {
       return this.getFirst();
-    } else if (index === this.totalData) {
+    } else if (index === this.totalData-1) {
       return this.getLast();
     } else {
       let curr = this.head;
@@ -316,22 +322,49 @@ class singleLinkedList {
       }
       node.next = curr.next;
       curr.next = node;
-      this.totalData += 1;  
+      this.totalData += 1;
     }
   }
 
   reverse() {
-    let temp = new singleLinkedList();
-    let curr = this.head;
-    while(curr){
-      temp.addFirst(curr.data);
-      curr = curr.next;
+    /* Handler
+    1. if linked list still empty
+    */
+    if(!this.head){
+      console.log("Empty Linked List");
+    }else{
+      let temp = new singleLinkedList();
+      let curr = this.head;
+      while(curr){
+        temp.addFirst(curr.data);
+        curr = curr.next;
+      }
+      this.head = temp.head;
+      temp = null;
     }
-    this.head = temp.head;
-    temp = null;
+  }
+
+  reversePrint(){
+    if(!this.head){
+      console.log("Empty Linked List");
+    }else{
+      let temp = new singleLinkedList();
+      let curr = this.head;
+      while(curr){
+        temp.addFirst(curr.data);
+        curr = curr.next;
+      }
+      temp.print();
+    }
   }
 
   getReverse(){
+    /* Handler
+    1. if linked list still empty
+    */
+    if(!this.head){
+      console.log("Empty linkled list !");
+    }
     let temp = new singleLinkedList();
     let curr = this.head;
     while(curr){
