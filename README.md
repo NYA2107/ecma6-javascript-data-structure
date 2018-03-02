@@ -23,3 +23,16 @@ reversePrint() | print value from tail node until head node
 size() | return the size of linked list
 isEmpty() | return true if list still empty, vice versa
 clear() | clearing the list
+
+## Stack ##
+
+Function | Description
+---------|------------
+enqueue(value) | Adding value to queue
+dequeue() | Remove the first item in the queue
+isEmpty() | Return true if queue still empty, vice versa
+getSize() | Return total data in this queue
+getFront() | Return data from the first node in the queue
+getBack() | Return data from the last node in the queue
+clear() | Clear this queue
+print() | Print data from the front node until the back node

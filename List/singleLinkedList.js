@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class singleLinkedList {
+class SingleLinkedList {
 
   constructor() {
     this.head = null;
@@ -379,11 +379,3 @@ class singleLinkedList {
   }
 
 }
-
-let temp = new singleLinkedList();
-temp.addFirst(1);
-temp.addFirst(2);
-temp.addFirst(3);
-temp.addFirst(4);
-temp.addFirst(5);
-temp.addFirst(6);
