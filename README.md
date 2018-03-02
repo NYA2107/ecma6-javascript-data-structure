@@ -24,7 +24,7 @@ size() | return the size of linked list
 isEmpty() | return true if list still empty, vice versa
 clear() | clearing the list
 
-## Stack ##
+## Queue ##
 
 Function | Description
 ---------|------------
