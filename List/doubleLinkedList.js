@@ -8,7 +8,7 @@ class Node {
 
 }
 
-class doubleLinkedList {
+class DoubleLinkedList {
 
   constructor() {
     this.head = null;
@@ -374,11 +374,3 @@ class doubleLinkedList {
   }
 
 }
-
-var tes = new doubleLinkedList();
-tes.addFirst(6);
-tes.addFirst(5);
-tes.addFirst(4);
-tes.addFirst(3);
-tes.addFirst(2);
-tes.addFirst(1);
